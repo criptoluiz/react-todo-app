@@ -31,11 +31,11 @@ function List(){
     useEffect(() => {
         let number=0;
         for(let a=0;a<items.length;a++){
-            if (items[a].complete==false){number++}
+            if (items[a].complete===false){number++}
             
         }
         setCount(number);
-    })
+    }, [])
     return (
         <div className='list'>
             <AddItem />
