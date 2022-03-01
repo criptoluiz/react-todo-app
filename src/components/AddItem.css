@@ -1,0 +1,10 @@
+.input {
+    background-color: hsl(237, 14%, 26%);
+    margin-bottom: 2em;
+    color: white;
+    padding: 0.1em 1em;
+    width: 100%;
+    border: none;
+    height: 54px;
+    border-radius: 5px;
+}
