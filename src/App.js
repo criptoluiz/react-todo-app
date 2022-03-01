@@ -9,13 +9,7 @@ function App() {
         <button>change css</button>
       </div>
       <List />
-      <div className='list-container'>
-        
-      </div>
-
-
-
-Drag and drop to reorder list
+      <p>Drag and drop to reorder list</p>
     </div>
   );
 }

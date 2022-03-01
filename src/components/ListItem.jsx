@@ -1,9 +1,14 @@
 import './ListItem.css';
 
 function ListItem(props) {
+    function changeComplete() {
+        
+        
+    }
     return (
         <div className='list-item'>
-            <input defaultChecked={props.complete} className='checkbox' type="checkbox" name="" id="" />
+            <input defaultChecked={props.complete} className='checkbox' type="checkbox" name="" id=""
+             />
             <h3>{props.title}</h3>
             <button className='delete'>X</button>
         </div>

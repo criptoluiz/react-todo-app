@@ -3,7 +3,7 @@ import './List.css'
 import ListItem from './ListItem';
 import AddItem from './AddItem';
 
-const items = [
+let items = [
     {
         title: 'Lavar a louça',
         complete: true
@@ -27,12 +27,11 @@ const items = [
 
 
 function List(){
-    const [count, setCount] = useState([]);
+    let [count, setCount] = useState([]);
     useEffect(() => {
         let number=0;
         for(let a=0;a<items.length;a++){
             if (items[a].complete===false){number++}
-            
         }
         setCount(number);
     }, [])
@@ -47,12 +46,12 @@ function List(){
             <div className='footer'>
         <p className='i-left'><span>{count}</span> items left</p>
         <div className='i-selection'>
-          All
-          Active 
-          Completed
+          <a>All</a>
+          <a>Active</a>
+          <a>Completed</a>
         </div>
         
-        <button className='cls-completed'>Clear Completed</button>
+        <a className='cls-completed'>Clear Completed</a>
         
         </div>
         </div>
