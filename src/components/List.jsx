@@ -35,6 +35,19 @@ function List(){
         }
         setCount(number);
     }, [])
+
+function showAll(){
+
+}
+
+function showActive(){
+    
+}
+
+function showCompleted(){
+
+}
+
     return (
         <div className='list'>
             <AddItem />
@@ -46,9 +59,9 @@ function List(){
             <div className='footer'>
         <p className='i-left'><span>{count}</span> items left</p>
         <div className='i-selection'>
-          <a>All</a>
-          <a>Active</a>
-          <a>Completed</a>
+          <a onClick={showAll}>All</a>
+          <a onClick={showActive}>Active</a>
+          <a onClick={showCompleted}>Completed</a>
         </div>
         
         <a className='cls-completed'>Clear Completed</a>
