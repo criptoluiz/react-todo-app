@@ -1,18 +1,20 @@
 import "./AddItem.css";
 
 function AddItem() {
-  document
-    .getElementById("list-input")
-    .addEventListener("keyup", function (event) {
-      event.preventDefault();
-      if (event.keyCode === 13) {
-        this.value = "";
-      }
-    });
+  function checkEnter(event) {
+    if (event.keyCode === 13) {
+      document.getElementById("list-input").value = "";
+    }
+  }
 
   return (
     <div>
-      <input id="list-input" className="input" type="text" />
+      <input
+        id="list-input"
+        className="input"
+        type="text"
+        onKeyUp={checkEnter}
+      />
     </div>
   );
 }
