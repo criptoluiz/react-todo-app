@@ -42,3 +42,26 @@
   display: none !important;
   transition-duration: 3s;
 }
+
+/* ADD ITEM */
+.input {
+  margin-bottom: 2em;
+  padding: 0.1em 1em;
+  width: 100%;
+  border: none;
+  height: 54px;
+  border-radius: 5px;
+  max-width: 600px;
+}
+
+.dark .input {
+  background-color: hsl(237, 14%, 26%);
+  box-shadow: 1px 1px 4px black;
+  color: white;
+}
+
+.light .input {
+  background-color: #fff;
+  box-shadow: 2px 2px 5px gray;
+  color: black;
+}

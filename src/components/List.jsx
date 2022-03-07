@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./List.css";
 import ListItem from "./ListItem";
-import AddItem from "./AddItem";
 
 let items = [
   {
@@ -68,11 +67,26 @@ function List() {
     }
   }
 
+  function checkEnter(event) {
+    if (event.keyCode === 13) {
+      const li = document.getElementById("list-input");
+      const list = document.getElementById("list");
+      li.value = "";
+    }
+  }
+
   return (
     <div className="list">
-      <AddItem />
+      <div>
+        <input
+          id="list-input"
+          className="input"
+          type="text"
+          onKeyUp={checkEnter}
+        />
+      </div>
 
-      <div className="list-container">
+      <div id="list" className="list-container">
         {items.map((i) => (
           <ListItem title={i.title} complete={i.complete} class={i.class} />
         ))}
