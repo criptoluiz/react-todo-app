@@ -7,18 +7,22 @@ let items = [
   {
     title: "Lavar a louça",
     complete: true,
+    class: "complete",
   },
   {
     title: "Alimentar o gato",
     complete: false,
+    class: "incomplete",
   },
   {
     title: "Levar o lixo p/ rua",
     complete: false,
+    class: "incomplete",
   },
   {
     title: "Comprar comida",
     complete: true,
+    class: "complete",
   },
 ];
 
@@ -34,11 +38,35 @@ function List() {
     setCount(number);
   }, []);
 
-  function showAll() {}
+  function showAll() {
+    let i = document.getElementsByClassName("list-item");
+    for (let a = 0; a < i.length; a++) {
+      if (i[a].classList.contains("hidden")) {
+        i[a].classList.remove("hidden");
+      }
+    }
+  }
 
-  function showActive() {}
+  function showActive() {
+    let i = document.getElementsByClassName("list-item");
 
-  function showCompleted() {}
+    for (let a = 0; a < i.length; a++) {
+      i[a].classList.remove("hidden");
+      if (i[a].classList.contains("complete")) {
+        i[a].classList.add("hidden");
+      }
+    }
+  }
+
+  function showCompleted() {
+    let i = document.getElementsByClassName("list-item");
+    for (let a = 0; a < i.length; a++) {
+      i[a].classList.remove("hidden");
+      if (i[a].classList.contains("incomplete")) {
+        i[a].classList.add("hidden");
+      }
+    }
+  }
 
   return (
     <div className="list">
@@ -46,7 +74,7 @@ function List() {
 
       <div className="list-container">
         {items.map((i) => (
-          <ListItem title={i.title} complete={i.complete} />
+          <ListItem title={i.title} complete={i.complete} class={i.class} />
         ))}
 
         <div className="footer">
