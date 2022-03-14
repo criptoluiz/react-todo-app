@@ -4,38 +4,53 @@ import ListItem from "./ListItem";
 
 let items = [
   {
+    key: 0,
     title: "Lavar a louça",
     complete: true,
     class: "complete",
   },
   {
+    key: 1,
     title: "Alimentar o gato",
     complete: false,
     class: "incomplete",
   },
   {
+    key: 2,
     title: "Levar o lixo p/ rua",
     complete: false,
     class: "incomplete",
   },
   {
+    key: 3,
     title: "Comprar comida",
     complete: true,
     class: "complete",
   },
 ];
 
+let listItem = document.getElementsByClassName("list-item");
+
 function List() {
-  let [count, setCount] = useState([]);
+  let [count, setCount] = useState(0);
+  let [inputTitle, setInputTitle] = useState();
+  let [list, setList] = useState(items);
+
+  const addListItem = (item) => {
+    console.log("list.jsx");
+    setList([...list, item]);
+    console.log(list);
+  };
+
   useEffect(() => {
     let number = 0;
-    for (let a = 0; a < items.length; a++) {
-      if (items[a].complete === false) {
+    for (let a = 0; a < listItem.length; a++) {
+      if (listItem[a].classList.contains("complete") === false) {
         number++;
       }
     }
     setCount(number);
-  }, []);
+  }, [list]);
 
   function showAll() {
     let i = document.getElementsByClassName("list-item");
@@ -67,10 +82,33 @@ function List() {
     }
   }
 
+  function changeStatus(item) {
+    if (item.target.parentElement.classList.contains("incomplete")) {
+      item.target.parentElement.classList.remove("incomplete");
+      item.target.parentElement.classList.add("complete");
+      count--;
+      setCount(count);
+    } else {
+      item.target.parentElement.classList.add("incomplete");
+      item.target.parentElement.classList.remove("complete");
+      count++;
+      setCount(count);
+    }
+    console.log(item.target.parentElement);
+  }
+
   function checkEnter(event) {
+    setInputTitle(event.target.value);
     if (event.keyCode === 13) {
       const li = document.getElementById("list-input");
       const list = document.getElementById("list");
+
+      let newListItem = {
+        title: inputTitle,
+        complete: false,
+        class: "incomplete",
+      };
+      addListItem(newListItem);
       li.value = "";
     }
   }
@@ -87,8 +125,13 @@ function List() {
       </div>
 
       <div id="list" className="list-container">
-        {items.map((i) => (
-          <ListItem title={i.title} complete={i.complete} class={i.class} />
+        {list.map((i) => (
+          <ListItem
+            title={i.title}
+            complete={i.complete}
+            class={i.class}
+            changeFunction={changeStatus}
+          />
         ))}
 
         <div className="footer">

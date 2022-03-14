@@ -1,11 +1,5 @@
 import "./AddItem.css";
 
-function AddItem() {
-  
-
-  return (
-    
-  );
-}
+function AddItem() {}
 
 export default AddItem;

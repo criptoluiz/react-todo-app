@@ -9,6 +9,7 @@ function ListItem(props) {
         type="checkbox"
         name=""
         id=""
+        onChange={props.changeFunction}
       />
       <h3>{props.title}</h3>
       <button className="delete">X</button>
