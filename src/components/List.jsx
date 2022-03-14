@@ -82,6 +82,18 @@ function List() {
     }
   }
 
+  function clearCompleted() {
+    let i = document.querySelectorAll(".list-item");
+    console.log(i)
+    for (let a = 0; a < i.length; a++){
+      i[a].classList.remove('hidden');
+      if (i[a].classList.contains('complete')){
+        console.log('removing ' +i[a])
+        i[a].remove()
+      }
+    }
+  }
+
   function changeStatus(item) {
     if (item.target.parentElement.classList.contains("incomplete")) {
       item.target.parentElement.classList.remove("incomplete");
@@ -97,7 +109,7 @@ function List() {
     console.log(item.target.parentElement);
   }
 
-  function checkEnter(event) {
+  function addItem(event) {
     setInputTitle(event.target.value);
     if (event.keyCode === 13) {
       const li = document.getElementById("list-input");
@@ -113,6 +125,15 @@ function List() {
     }
   }
 
+  function removeItem(event) {
+    event.target.parentElement.remove()
+    if(event.target.parentElement.classList.contains('incomplete')) {
+      count--
+      setCount(count)
+    }
+  }
+
+
   return (
     <div className="list">
       <div>
@@ -120,7 +141,7 @@ function List() {
           id="list-input"
           className="input"
           type="text"
-          onKeyUp={checkEnter}
+          onKeyUp={addItem}
         />
       </div>
 
@@ -131,6 +152,7 @@ function List() {
             complete={i.complete}
             class={i.class}
             changeFunction={changeStatus}
+            onDeleteItem={removeItem}
           />
         ))}
 
@@ -144,7 +166,7 @@ function List() {
             <a onClick={showCompleted}>Completed</a>
           </div>
 
-          <a className="cls-completed">Clear Completed</a>
+          <a className="cls-completed" onClick={clearCompleted}>Clear Completed</a>
         </div>
       </div>
     </div>

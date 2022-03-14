@@ -1,6 +1,7 @@
 import "./ListItem.css";
 
 function ListItem(props) {
+
   return (
     <div className={"list-item " + props.class}>
       <input
@@ -12,7 +13,7 @@ function ListItem(props) {
         onChange={props.changeFunction}
       />
       <h3>{props.title}</h3>
-      <button className="delete">X</button>
+      <button onClick={props.onDeleteItem} className="delete">X</button>
     </div>
   );
 }
